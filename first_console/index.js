@@ -6,11 +6,11 @@ const inp = readline.createInterface({
   output: process.stdout
 });
 
-console.log("Type exit to leave:")
+console.log("Type " +  "exit".bold.bgYellow + " to leave! \n\n");
 
 inp.setPrompt("who are you? ")
-
-inp.question("who are you? ", ask); 
+inp.prompt();
+inp.on('line', ask);
 
 function ask(txt) {
   if (txt === "Mark") {
@@ -21,5 +21,5 @@ function ask(txt) {
   } else {
     console.log("not good!".red)
   }
-  inp.question("who are you? ", ask); 
+  this.prompt(); 
 };
