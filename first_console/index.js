@@ -8,12 +8,18 @@ const inp = readline.createInterface({
 
 console.log("Type exit to leave:")
 
-inp.question("who are you? ", (txt) => {
+inp.setPrompt("who are you? ")
+
+inp.question("who are you? ", ask); 
+
+function ask(txt) {
   if (txt === "Mark") {
     console.log("good!".green)
   } else if (txt === "exit") {
     inp.close();
+    process.exit();
   } else {
     console.log("not good!".red)
   }
-}); 
+  inp.question("who are you? ", ask); 
+};
